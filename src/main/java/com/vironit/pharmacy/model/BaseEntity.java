@@ -15,5 +15,6 @@ public class BaseEntity implements Serializable{
         return id;
     }
 
-
+    public BaseEntity() {
+    }
 }
