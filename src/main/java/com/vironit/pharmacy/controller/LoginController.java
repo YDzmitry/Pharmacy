@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.PostUpdate;
 
-
+@CrossOrigin
 @RestController
 public class LoginController {
 
@@ -20,6 +19,7 @@ public class LoginController {
         long id = userService.save(user);
         return ResponseEntity.ok().body("New User has been saved with ID:" + id);
     }
+
 
     @GetMapping("/user/{id}")
     public ResponseEntity<User> get(@PathVariable("id") long id) {
@@ -39,6 +39,6 @@ public class LoginController {
         return ResponseEntity.ok().body("User has been deleted" + id);
     }
 
-
+    //TODO DTO
 
 }

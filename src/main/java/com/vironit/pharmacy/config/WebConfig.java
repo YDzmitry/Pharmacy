@@ -13,20 +13,4 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 @ComponentScan("com.vironit")
 public class WebConfig implements WebMvcConfigurer {
-
-    @Bean
-    public ViewResolver viewResolver(){
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/");
-        resolver.setSuffix(".html");
-        resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
-        resolver.setExposeContextBeansAsAttributes(true);
-        return resolver;
-    }
-
-
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
 }
