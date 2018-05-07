@@ -1,5 +1,7 @@
 package com.vironit.pharmacy.model;
 
+import org.springframework.context.annotation.Bean;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,10 +16,10 @@ public class Role extends BaseEntity{
         this.role = role;
     }
 
-    public Role() {
+    public Role(String customer) {
     }
 
-    public String getRole() {
-        return role;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

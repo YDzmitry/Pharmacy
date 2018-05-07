@@ -13,17 +13,11 @@ public class TypeAccount extends BaseEntity{
     @Column (name = "type")
     private String type;
 
-
     public TypeAccount(String type) {
         this.type = type;
     }
 
     public TypeAccount() {
     }
-
-    public String getType() {
-        return type;
-    }
-
 
 }
