@@ -8,7 +8,6 @@ import com.vironit.pharmacy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.core.convert.ConversionService;
 
 import javax.validation.Valid;
 
@@ -28,4 +27,6 @@ public class RegistrationController {
         return ResponseEntity.ok().body("New User has been saved with ID:" + id);
     }
 
+
+    //TODO валидация с помощью аспектов
 }

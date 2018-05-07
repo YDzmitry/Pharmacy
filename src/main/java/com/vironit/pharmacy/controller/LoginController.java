@@ -39,6 +39,4 @@ public class LoginController {
         return ResponseEntity.ok().body("User has been deleted" + id);
     }
 
-    //TODO DTO
-
 }
