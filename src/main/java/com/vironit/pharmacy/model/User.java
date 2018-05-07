@@ -13,25 +13,17 @@ public class User extends BaseEntity{
 
     @NaturalId
     @Column(name = "login")
-    @Getter
-    @Setter
     private String login;
 
     @Column(name = "password")
-    @Getter
-    @Setter
     private String password;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "roles_id")
-    @Getter
-    @Setter
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "typeaccount_id")
-    @Getter
-    @Setter
     private TypeAccount typeAccount;
 
 
@@ -43,5 +35,39 @@ public class User extends BaseEntity{
     }
 
     public User() {
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+
+    public TypeAccount getTypeAccount() {
+        return typeAccount;
+    }
+
+    public void setTypeAccount(TypeAccount typeAccount) {
+        this.typeAccount = typeAccount;
     }
 }

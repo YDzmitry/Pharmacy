@@ -12,14 +12,19 @@ public class Role extends BaseEntity{
     @Column(name = "userrole")
     private String role;
 
-    public Role(Integer id,String role) {
+
+    public Role(String role) {
         this.role = role;
     }
 
-    public Role(String customer) {
+    public Role() {
     }
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getRole() {
+        return role;
     }
 }

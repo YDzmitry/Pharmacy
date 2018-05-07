@@ -20,4 +20,11 @@ public class TypeAccount extends BaseEntity{
     public TypeAccount() {
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

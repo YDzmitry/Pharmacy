@@ -24,12 +24,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public Long create(User user) throws CustomGenericException {
-        Session session = sessionFactory.getCurrentSession();
-        Transaction trans=session.beginTransaction();
-        session.save(user);
-        trans.commit();
+        Long id = (Long) sessionFactory.getCurrentSession().save(user);
         logger.info("Person saved successfully, Person Details=" + user);
-        return user.getId();
+        return id;
     }
 
     @Override
