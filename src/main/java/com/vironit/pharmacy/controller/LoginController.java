@@ -3,11 +3,13 @@ package com.vironit.pharmacy.controller;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin
+@Scope("request")
 @RestController
 public class LoginController {
 

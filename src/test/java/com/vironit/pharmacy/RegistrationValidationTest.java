@@ -17,7 +17,7 @@ public class RegistrationValidationTest {
     @Autowired
     RegistrationValidator registrationValidator;
 
-    @Test(expected = RegistrationValidatorException.class)
+    /*@Test(expected = RegistrationValidatorException.class)
     public void testAllFieldsValidator() {
         String login = "123+";
         String password = "123asa";
@@ -98,7 +98,7 @@ public class RegistrationValidationTest {
             assertEquals(false, ex.getErrMessageMap().containsKey("passport"));
         }
     }
-
+*/
 
 
 }
