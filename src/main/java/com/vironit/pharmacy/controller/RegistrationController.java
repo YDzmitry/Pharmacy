@@ -2,7 +2,7 @@ package com.vironit.pharmacy.controller;
 
 
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
-import com.vironit.pharmacy.dto.NewRegistrationUser;
+import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.service.UserService;
@@ -10,6 +10,7 @@ import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,12 +30,11 @@ public class RegistrationController {
 
 
     @PostMapping("/createNewUser")
-    public ResponseEntity<?> save(@Valid @RequestBody NewRegistrationUser newRegistrationUser) {
-       // RegistrationValidator validator = (RegistrationValidator)
-        //UserService userService1 = (UserService)
+    public ResponseEntity<?> save(@Valid @RequestBody RegistrationAndLoginUser newRegistrationUser) {
         User user = converter.convert(newRegistrationUser);
         long id = userService.save(user);
-        return ResponseEntity.ok().body("New User has been saved with ID:" + id);
+        return ResponseEntity.ok().body(HttpStatus.ACCEPTED);
+        //TODO что возвращать?
     }
 
     @ExceptionHandler(RegistrationValidatorException.class)
@@ -48,13 +48,13 @@ public class RegistrationController {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity handleAllException(Exception ex) {
-        return ResponseEntity.badRequest().body("error");
+    public ResponseEntity handleAllException() {
+        return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
     }
 
 
 
+    //TODO логгирование c помощью аспектов
 
-    //TODO валидация с помощью аспектов
-    //логгирование
+
 }

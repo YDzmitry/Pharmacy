@@ -1,5 +1,6 @@
 package com.vironit.pharmacy.service;
 
+import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.model.User;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,4 +19,6 @@ public interface UserService {
 
     @Transactional
     void delete(long id);
+
+    long getByLoginAndPassword(RegistrationAndLoginUser user);
 }

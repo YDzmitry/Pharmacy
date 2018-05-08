@@ -1,6 +1,7 @@
 package com.vironit.pharmacy.dao;
 
 import com.vironit.pharmacy.config.ConnectionConfig;
+import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.model.*;
 import org.apache.log4j.LogManager;
@@ -32,8 +33,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getAll() throws CustomGenericException {
-        Session session = sessionFactory.getCurrentSession();
-        List<User> usersList = session.createQuery("from users").list();
+        List<User> usersList = sessionFactory.getCurrentSession().createQuery("from User").list();
         for (User user : usersList) {
             logger.info("Person List::" + user);
         }
@@ -58,16 +58,15 @@ public class UserDaoImpl implements UserDao {
         logger.info("Person deleted successfully");
     }
 
-
-    //@Override
-    public User getByLogin(String login) throws CustomGenericException {
+    @Override
+    public long getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        User user = session.byNaturalId(User.class)
-                .using("static/login",login)
-                .load();
-        transaction.commit();
-        logger.info("Person loaded successfully, Person details=" + login);
-        return user;
+        String hql = "from User Where User.login = :login and User.password = :password";
+        User user = (User) session.createQuery(hql)
+                .setParameter("login",loginUser.getLogin())
+                .setParameter("password",loginUser.getPassword())
+                .list().get(0);
+        return user.getId();
     }
+
 }

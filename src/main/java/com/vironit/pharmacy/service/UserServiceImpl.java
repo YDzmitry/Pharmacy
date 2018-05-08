@@ -1,7 +1,7 @@
 package com.vironit.pharmacy.service;
 
-import com.vironit.pharmacy.dao.UserDao;
 import com.vironit.pharmacy.dao.UserDaoImpl;
+import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.validator.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @Service
@@ -50,6 +49,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(long id) {
         userDao.delete(id);
+    }
+
+    @Override
+    public long getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
+        return userDao.getByLoginAndPassword(loginUser);
     }
 
 }

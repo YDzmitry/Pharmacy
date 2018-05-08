@@ -1,6 +1,6 @@
 package com.vironit.pharmacy.aspect;
 
-import com.vironit.pharmacy.dto.NewRegistrationUser;
+import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.validator.RegistrationValidator;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,7 +17,7 @@ public class RegistrationValidatorExceptionAspect {
 
     @Before("execution(* com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter.convert(..))")
     public void validateBefore(JoinPoint joinPoint){
-        NewRegistrationUser user = (NewRegistrationUser)joinPoint.getArgs()[0];
+        RegistrationAndLoginUser user = (RegistrationAndLoginUser)joinPoint.getArgs()[0];
         registrationValidator.validate(user.getLogin(),user.getPassword());
     }
 }
