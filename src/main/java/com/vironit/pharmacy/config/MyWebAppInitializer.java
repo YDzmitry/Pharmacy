@@ -1,8 +1,9 @@
 package com.vironit.pharmacy.config;
 
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-
+@EnableAspectJAutoProxy
 public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
    @Override

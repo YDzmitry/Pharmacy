@@ -3,12 +3,11 @@ package com.vironit.pharmacy.controller;
 
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.NewRegistrationUser;
-import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.service.UserService;
 import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
-import org.postgresql.util.PSQLException;
+import com.vironit.pharmacy.validator.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -32,6 +31,8 @@ public class RegistrationController {
 
     @PostMapping("/createNewUser")
     public ResponseEntity<?> save(@Valid @RequestBody NewRegistrationUser newRegistrationUser) {
+       // RegistrationValidator validator = (RegistrationValidator)
+        //UserService userService1 = (UserService)
         User user = converter.convert(newRegistrationUser);
         long id = userService.save(user);
         return ResponseEntity.ok().body("New User has been saved with ID:" + id);
