@@ -2,6 +2,8 @@ package com.vironit.pharmacy.dao;
 
 import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.model.User;
+import org.postgresql.util.PSQLException;
+
 import java.util.List;
 
 public interface UserDao extends Dao<User> {

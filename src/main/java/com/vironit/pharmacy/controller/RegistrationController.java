@@ -3,12 +3,15 @@ package com.vironit.pharmacy.controller;
 
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.NewRegistrationUser;
+import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.service.UserService;
+import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpStatus;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +26,8 @@ public class RegistrationController {
     UserService userService;
     @Autowired
     NewRegistrationUserToUserConverter converter;
-
+    @Autowired
+    CreatingNewUserErrorValidator creatingNewUserValidatorPostgresSql;
 
 
     @PostMapping("/createNewUser")
@@ -38,17 +42,19 @@ public class RegistrationController {
         return ResponseEntity.ok().body(ex.getErrMessageMap());
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<?> handlePSQLException(Exception ex){
+        return ResponseEntity.ok().body(creatingNewUserValidatorPostgresSql.validate(ex));
+    }
+
     @ExceptionHandler(Exception.class)
-    public ResponseEntity handleAllException() {
-        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    public ResponseEntity handleAllException(Exception ex) {
+        return ResponseEntity.badRequest().body("error");
     }
 
 
 
 
     //TODO валидация с помощью аспектов
-
-    //TODO exceptionHandler
-
-    //спросить насчет Scope  бинов
+    //логгирование
 }
