@@ -20,5 +20,5 @@ public interface UserService {
     @Transactional
     void delete(long id);
 
-    long getByLoginAndPassword(RegistrationAndLoginUser user);
+    User getByLoginAndPassword(RegistrationAndLoginUser user);
 }

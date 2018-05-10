@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public long getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
+    public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         return userDao.getByLoginAndPassword(loginUser);
     }
 

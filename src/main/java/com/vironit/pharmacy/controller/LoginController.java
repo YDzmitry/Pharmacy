@@ -3,6 +3,7 @@ package com.vironit.pharmacy.controller;
 
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
+import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.service.UserService;
 import com.vironit.pharmacy.util.NoCheckingActualSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public ResponseEntity<?> enter(@Valid @RequestBody RegistrationAndLoginUser loginUser, HttpSession httpSession) {
-        long id = userService.getByLoginAndPassword(loginUser);
-        httpSession.setAttribute("idUser",id);
+        User user = userService.getByLoginAndPassword(loginUser);
+        httpSession.setAttribute("idUser",user.getId());
+        httpSession.setAttribute("roleUser",user.getRole());
         return ResponseEntity.ok().body(httpSession);
     }
 }

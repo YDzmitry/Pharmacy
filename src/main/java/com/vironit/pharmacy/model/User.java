@@ -53,8 +53,8 @@ public class User extends BaseEntity{
     }
 
 
-    public Role getRole() {
-        return role;
+    public String getRole() {
+        return role.getRole();
     }
 
     public void setRole(Role role) {
@@ -62,8 +62,8 @@ public class User extends BaseEntity{
     }
 
 
-    public TypeAccount getTypeAccount() {
-        return typeAccount;
+    public String getTypeAccount() {
+        return typeAccount.getType();
     }
 
     public void setTypeAccount(TypeAccount typeAccount) {
