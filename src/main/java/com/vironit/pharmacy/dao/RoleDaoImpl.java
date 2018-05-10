@@ -1,6 +1,6 @@
 package com.vironit.pharmacy.dao;
 
-import com.vironit.pharmacy.model.Role;
+import com.vironit.pharmacy.model.user.Role;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;

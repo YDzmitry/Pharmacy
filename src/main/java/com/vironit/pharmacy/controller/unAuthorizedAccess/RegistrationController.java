@@ -4,7 +4,7 @@ package com.vironit.pharmacy.controller.unAuthorizedAccess;
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
-import com.vironit.pharmacy.model.User;
+import com.vironit.pharmacy.model.user.User;
 import com.vironit.pharmacy.service.UserService;
 import com.vironit.pharmacy.util.NoCheckingActualSession;
 import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;

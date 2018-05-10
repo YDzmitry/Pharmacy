@@ -1,7 +1,7 @@
 package com.vironit.pharmacy.service;
 
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
-import com.vironit.pharmacy.model.User;
+import com.vironit.pharmacy.model.user.User;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

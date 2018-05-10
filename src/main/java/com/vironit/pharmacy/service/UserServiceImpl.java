@@ -2,10 +2,8 @@ package com.vironit.pharmacy.service;
 
 import com.vironit.pharmacy.dao.UserDaoImpl;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
-import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.exception.LoginValidatorException;
-import com.vironit.pharmacy.exception.RegistrationValidatorException;
-import com.vironit.pharmacy.model.User;
+import com.vironit.pharmacy.model.user.User;
 import com.vironit.pharmacy.validator.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

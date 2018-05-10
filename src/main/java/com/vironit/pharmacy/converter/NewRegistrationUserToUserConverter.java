@@ -1,9 +1,9 @@
 package com.vironit.pharmacy.converter;
 
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
-import com.vironit.pharmacy.model.Role;
-import com.vironit.pharmacy.model.TypeAccount;
-import com.vironit.pharmacy.model.User;
+import com.vironit.pharmacy.model.user.Role;
+import com.vironit.pharmacy.model.user.TypeAccount;
+import com.vironit.pharmacy.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

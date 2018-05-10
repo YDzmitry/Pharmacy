@@ -2,7 +2,7 @@ package com.vironit.pharmacy.dao;
 
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.CustomGenericException;
-import com.vironit.pharmacy.model.User;
+import com.vironit.pharmacy.model.user.User;
 
 import java.util.List;
 

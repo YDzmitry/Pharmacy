@@ -1,6 +1,6 @@
 package com.vironit.pharmacy.controller;
 
-import com.vironit.pharmacy.model.User;
+import com.vironit.pharmacy.model.user.User;
 import com.vironit.pharmacy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

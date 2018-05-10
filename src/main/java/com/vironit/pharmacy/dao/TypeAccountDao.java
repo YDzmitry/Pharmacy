@@ -1,6 +1,6 @@
 package com.vironit.pharmacy.dao;
 
-import com.vironit.pharmacy.model.TypeAccount;
+import com.vironit.pharmacy.model.user.TypeAccount;
 
 import java.io.IOException;
 import java.util.List;

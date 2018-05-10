@@ -1,5 +1,7 @@
-package com.vironit.pharmacy.model;
+package com.vironit.pharmacy.model.medicine;
 
+
+import com.vironit.pharmacy.model.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

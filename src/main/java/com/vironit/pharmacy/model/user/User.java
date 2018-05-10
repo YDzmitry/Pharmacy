@@ -1,14 +1,15 @@
-package com.vironit.pharmacy.model;
+package com.vironit.pharmacy.model.user;
 
 
 
+import com.vironit.pharmacy.model.BaseEntity;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity{
+public class User extends BaseEntity {
 
     @NaturalId
     @Column(name = "login")

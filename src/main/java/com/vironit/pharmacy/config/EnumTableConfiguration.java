@@ -2,8 +2,8 @@ package com.vironit.pharmacy.config;
 
 import com.vironit.pharmacy.dao.RoleDao;
 import com.vironit.pharmacy.dao.TypeAccountDao;
-import com.vironit.pharmacy.model.Role;
-import com.vironit.pharmacy.model.TypeAccount;
+import com.vironit.pharmacy.model.user.Role;
+import com.vironit.pharmacy.model.user.TypeAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
