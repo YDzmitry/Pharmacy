@@ -35,7 +35,7 @@ public class RegistrationController {
     @PostMapping("/createNewUser")
     public ResponseEntity<?> save(@Valid @RequestBody RegistrationAndLoginUser newRegistrationUser) {
         User user = converter.convert(newRegistrationUser);
-        long id = userService.save(user);
+        userService.save(user);
         return ResponseEntity.ok().body(HttpStatus.ACCEPTED);
         //TODO что возвращать?
     }
