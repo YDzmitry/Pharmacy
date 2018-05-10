@@ -32,6 +32,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<User> getAll() throws CustomGenericException {
         List<User> usersList = sessionFactory.getCurrentSession().createQuery("from User").list();
         for (User user : usersList) {
@@ -65,7 +66,8 @@ public class UserDaoImpl implements UserDao {
         User user = (User) session.createQuery(hql)
                 .setParameter("login",loginUser.getLogin())
                 .setParameter("password",loginUser.getPassword())
-                .list().get(0);
+                .list()
+                .get(0);
         return user.getId();
     }
 

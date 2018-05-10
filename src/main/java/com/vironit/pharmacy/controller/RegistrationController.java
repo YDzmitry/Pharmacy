@@ -6,6 +6,7 @@ import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.service.UserService;
+import com.vironit.pharmacy.util.NoCheckingActualSession;
 import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@NoCheckingActualSession
 @CrossOrigin
 @Scope("request")
 @RestController
@@ -27,6 +29,7 @@ public class RegistrationController {
     NewRegistrationUserToUserConverter converter;
     @Autowired
     CreatingNewUserErrorValidator creatingNewUserValidatorPostgresSql;
+
 
 
     @PostMapping("/createNewUser")
