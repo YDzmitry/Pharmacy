@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "from User Where User.login = :login and User.password = :password";
+        String hql = "from User Where login = :login and password = :password";
         User user = (User) session.createQuery(hql)
                 .setParameter("login",loginUser.getLogin())
                 .setParameter("password",loginUser.getPassword())

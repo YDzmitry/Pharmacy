@@ -3,6 +3,7 @@ package com.vironit.pharmacy.controller;
 
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
+import com.vironit.pharmacy.exception.LoginValidatorException;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.service.UserService;
@@ -30,7 +31,18 @@ public class LoginController {
         User user = userService.getByLoginAndPassword(loginUser);
         httpSession.setAttribute("idUser",user.getId());
         httpSession.setAttribute("roleUser",user.getRole());
-        return ResponseEntity.ok().body(httpSession);
+        return ResponseEntity.ok().body(user);
     }
+
+    @ExceptionHandler(LoginValidatorException.class)
+    public ResponseEntity handleInvalidCredentials(LoginValidatorException ex){
+        return ResponseEntity.ok().body(ex.getErrMessageMap());
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity handleAllException(Exception ex) {
+        return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
+    }
+    //TODO может это сделать аспектом?
 
 }

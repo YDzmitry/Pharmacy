@@ -2,6 +2,9 @@ package com.vironit.pharmacy.service;
 
 import com.vironit.pharmacy.dao.UserDaoImpl;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
+import com.vironit.pharmacy.exception.CustomGenericException;
+import com.vironit.pharmacy.exception.LoginValidatorException;
+import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.User;
 import com.vironit.pharmacy.validator.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +12,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Scope("request")
@@ -53,7 +58,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
-        return userDao.getByLoginAndPassword(loginUser);
+        Map<String, String> errMessageMap = new HashMap<>();
+        User user;
+        try{
+            user = userDao.getByLoginAndPassword(loginUser);
+        }catch (IndexOutOfBoundsException ex){
+            errMessageMap.put("error","invalid credentials");
+            throw new LoginValidatorException(errMessageMap);
+        }
+        return user;
     }
 
 }
