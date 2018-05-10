@@ -1,4 +1,4 @@
-package com.vironit.pharmacy.controller;
+package com.vironit.pharmacy.controller.unAuthorizedAccess;
 
 
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;

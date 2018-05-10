@@ -17,11 +17,11 @@ public class User extends BaseEntity{
     @Column(name = "password")
     private String password;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "roles_id")
     private Role role;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "typeaccount_id")
     private TypeAccount typeAccount;
 

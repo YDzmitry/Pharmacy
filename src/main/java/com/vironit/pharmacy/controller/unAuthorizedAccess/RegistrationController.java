@@ -1,4 +1,4 @@
-package com.vironit.pharmacy.controller;
+package com.vironit.pharmacy.controller.unAuthorizedAccess;
 
 
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
@@ -30,8 +30,6 @@ public class RegistrationController {
     @Autowired
     CreatingNewUserErrorValidator creatingNewUserValidatorPostgresSql;
 
-
-
     @PostMapping("/createNewUser")
     public ResponseEntity<?> save(@Valid @RequestBody RegistrationAndLoginUser newRegistrationUser) {
         User user = converter.convert(newRegistrationUser);
@@ -55,9 +53,5 @@ public class RegistrationController {
         return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
     }
 
-
-
     //TODO логгирование c помощью аспектов
-
-
 }
