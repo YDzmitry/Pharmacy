@@ -1,6 +1,5 @@
 package com.vironit.pharmacy.dao;
 
-import com.vironit.pharmacy.config.ConnectionConfig;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.model.*;
@@ -8,8 +7,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -60,7 +57,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public long getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
+    public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Session session = sessionFactory.getCurrentSession();
         String hql = "from User Where User.login = :login and User.password = :password";
         User user = (User) session.createQuery(hql)
@@ -68,7 +65,7 @@ public class UserDaoImpl implements UserDao {
                 .setParameter("password",loginUser.getPassword())
                 .list()
                 .get(0);
-        return user.getId();
+        return user;
     }
 
 }
