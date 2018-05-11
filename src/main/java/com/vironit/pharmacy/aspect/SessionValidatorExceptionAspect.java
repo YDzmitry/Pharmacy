@@ -12,15 +12,15 @@ import javax.servlet.http.HttpSession;
 @Component
 public class SessionValidatorExceptionAspect {
 
-    @Before("execution(* com.vironit.pharmacy.controller.*.*(..))"+
-           "&& !@target(com.vironit.pharmacy.util.NoCheckingActualSession)")
-    public void validateBefore(JoinPoint joinPoint){
+    @Before("execution(* com.vironit.pharmacy.controller.*.*(..))" +
+            "&& !@target(com.vironit.pharmacy.util.NoCheckingActualSession)")
+    public void validateBefore(JoinPoint joinPoint) {
         for (int i = 0; i < joinPoint.getArgs().length; i++) {
-            if (joinPoint.getArgs()[i] instanceof HttpSession){
+            if (joinPoint.getArgs()[i] instanceof HttpSession) {
                 HttpSession httpSession = (HttpSession) joinPoint.getArgs()[i];
-                try{
+                try {
                     httpSession.getAttribute("idUser");
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     throw new CustomGenericException("no authorized");
                 }
             }

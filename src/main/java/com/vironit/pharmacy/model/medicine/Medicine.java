@@ -3,7 +3,6 @@ package com.vironit.pharmacy.model.medicine;
 import com.vironit.pharmacy.model.BaseEntity;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,17 +22,17 @@ public class Medicine extends BaseEntity {
     @JoinColumn(name = "manufacture_id")
     private Manufacture manufactor;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "medicine_effecttouse",
-            joinColumns = @JoinColumn(name = "medicine_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "effect_id",referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "medicine_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "effect_id", referencedColumnName = "id")
     )
     private Set<EffectToUse> effectToUseList;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "medicine_indicatorstouse",
-            joinColumns = @JoinColumn(name = "medicine_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "indicator_id",referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "medicine_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "indicator_id", referencedColumnName = "id")
     )
     private Set<IndicatorToUse> indicatorsToUseList;
 

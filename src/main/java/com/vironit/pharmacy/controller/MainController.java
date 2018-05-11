@@ -1,7 +1,6 @@
 package com.vironit.pharmacy.controller;
 
 import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.MainService;
 import com.vironit.pharmacy.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -31,13 +30,13 @@ public class MainController {
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") long id,@RequestBody User user){
+    public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody User user) {
         userService.update(user);
         return ResponseEntity.ok().body("User has been updated " + id);
     }
 
     @DeleteMapping("/user/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") long id){
+    public ResponseEntity<?> delete(@PathVariable("id") long id) {
         userService.delete(id);
         return ResponseEntity.ok().body("User has been deleted" + id);
     }

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Repository
-public class TypeAccountDaoImpl implements TypeAccountDao{
+public class TypeAccountDaoImpl implements TypeAccountDao {
 
     private static final Logger logger = LogManager.getLogger(TypeAccountDaoImpl.class);
 

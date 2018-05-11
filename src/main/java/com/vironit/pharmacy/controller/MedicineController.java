@@ -30,13 +30,13 @@ public class MedicineController {
     }
 
     @PutMapping("/medicine/update/{id}")
-    public ResponseEntity<?> updateMedicine(@PathVariable("id") long id,@RequestBody Medicine medicine){
+    public ResponseEntity<?> updateMedicine(@PathVariable("id") long id, @RequestBody Medicine medicine) {
         medicineService.update(medicine);
         return ResponseEntity.ok().body("Medicine has been updated " + id);
     }
 
     @DeleteMapping("/medicine/delete/{id}")
-    public ResponseEntity<?> deleteMedicine(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteMedicine(@PathVariable("id") long id) {
         medicineService.delete(id);
         return ResponseEntity.ok().body("Medicine has been deleted" + id);
     }

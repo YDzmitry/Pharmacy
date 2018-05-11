@@ -1,12 +1,7 @@
 package com.vironit.pharmacy.config;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -19,7 +14,7 @@ import static org.hibernate.cfg.Environment.*;
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScans(value = { @ComponentScan("com.vironit.pharmacy.model")})
+@ComponentScans(value = {@ComponentScan("com.vironit.pharmacy.model")})
 public class ConnectionConfig {
 
     @Autowired
@@ -35,9 +30,9 @@ public class ConnectionConfig {
         props.put(URL, env.getProperty("url"));
         props.put(USER, env.getProperty("db.user"));
         props.put(PASS, env.getProperty("db.password"));
-        props.put(DEFAULT_SCHEMA,env.getProperty("default.schema"));
-        props.put(DIALECT,env.getProperty("sql.dialect"));
-        props.put(NON_CONTEXTUAL_LOB_CREATION,env.getProperty("hibernate.jdbc.lob.non_contextual_creation"));
+        props.put(DEFAULT_SCHEMA, env.getProperty("default.schema"));
+        props.put(DIALECT, env.getProperty("sql.dialect"));
+        props.put(NON_CONTEXTUAL_LOB_CREATION, env.getProperty("hibernate.jdbc.lob.non_contextual_creation"));
         // Setting Hibernate properties
         props.put(SHOW_SQL, env.getProperty("hibernate.show_sql"));
         props.put(HBM2DDL_AUTO, env.getProperty("hibernate.hbm2ddl.auto"));

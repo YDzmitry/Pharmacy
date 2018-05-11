@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Repository
-public class RoleDaoImpl implements RoleDao{
+public class RoleDaoImpl implements RoleDao {
 
     private static final Logger logger = LogManager.getLogger(RoleDaoImpl.class);
 

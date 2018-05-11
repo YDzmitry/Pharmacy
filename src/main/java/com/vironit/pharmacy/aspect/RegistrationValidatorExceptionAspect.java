@@ -16,8 +16,8 @@ public class RegistrationValidatorExceptionAspect {
     RegistrationValidator registrationValidator;
 
     @Before("execution(* com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter.convert(..))")
-    public void validateBefore(JoinPoint joinPoint){
-        RegistrationAndLoginUser user = (RegistrationAndLoginUser)joinPoint.getArgs()[0];
-        registrationValidator.validate(user.getLogin(),user.getPassword());
+    public void validateBefore(JoinPoint joinPoint) {
+        RegistrationAndLoginUser user = (RegistrationAndLoginUser) joinPoint.getArgs()[0];
+        registrationValidator.validate(user.getLogin(), user.getPassword());
     }
 }

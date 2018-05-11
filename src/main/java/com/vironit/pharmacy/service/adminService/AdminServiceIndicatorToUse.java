@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Scope("request")
 @Transactional(readOnly = true)
-public class AdminServiceIndicatorToUse implements AdminService<IndicatorToUse>{
+public class AdminServiceIndicatorToUse implements AdminService<IndicatorToUse> {
 
     @Autowired
     private IndicatorToUseDao indicatorToUseDao;

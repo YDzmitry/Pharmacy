@@ -1,7 +1,6 @@
 package com.vironit.pharmacy.dao.userDao;
 
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
-import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.model.user.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -40,7 +39,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getByPK(Long key) {
-        User user =  sessionFactory.getCurrentSession().get(User.class, key);
+        User user = sessionFactory.getCurrentSession().get(User.class, key);
         logger.info("Person loaded successfully, Person details=" + key);
         return user;
     }
@@ -61,8 +60,8 @@ public class UserDaoImpl implements UserDao {
         Session session = sessionFactory.getCurrentSession();
         String hql = "from User Where login = :login and password = :password";
         User user = (User) session.createQuery(hql)
-                .setParameter("login",loginUser.getLogin())
-                .setParameter("password",loginUser.getPassword())
+                .setParameter("login", loginUser.getLogin())
+                .setParameter("password", loginUser.getPassword())
                 .list()
                 .get(0);
         return user;

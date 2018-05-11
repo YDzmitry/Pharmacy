@@ -3,8 +3,6 @@ package com.vironit.pharmacy.dao;
 import com.vironit.pharmacy.exception.CustomGenericException;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface Dao<T> {

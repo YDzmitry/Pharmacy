@@ -1,10 +1,10 @@
 package com.vironit.pharmacy.model.user;
 
 import com.vironit.pharmacy.model.BaseEntity;
-import org.springframework.context.annotation.Bean;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")

@@ -28,7 +28,7 @@ public class UserServiceImpl implements MainService<User> {
     @Transactional
     @Override
     public long save(User user) {
-        registrationValidator.validate(user.getLogin(),user.getPassword());
+        registrationValidator.validate(user.getLogin(), user.getPassword());
         return userDao.create(user);
     }
 
@@ -58,10 +58,10 @@ public class UserServiceImpl implements MainService<User> {
     public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Map<String, String> errMessageMap = new HashMap<>();
         User user;
-        try{
+        try {
             user = userDao.getByLoginAndPassword(loginUser);
-        }catch (IndexOutOfBoundsException ex){
-            errMessageMap.put("error","invalid credentials");
+        } catch (IndexOutOfBoundsException ex) {
+            errMessageMap.put("error", "invalid credentials");
             throw new LoginValidatorException(errMessageMap);
         }
         return user;

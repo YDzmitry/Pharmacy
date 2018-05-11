@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class IndicatorToUseDao implements  MainComponentMedicineDao<IndicatorToUse>{
+public class IndicatorToUseDao implements MainComponentMedicineDao<IndicatorToUse> {
 
     private static final Logger logger = LogManager.getLogger(ManufactureDao.class);
 

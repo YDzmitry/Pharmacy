@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class NewRegistrationUserToUserConverter implements Converter<RegistrationAndLoginUser,User> {
+public class NewRegistrationUserToUserConverter implements Converter<RegistrationAndLoginUser, User> {
 
 
     @Autowired
-    Map<String,Role> mapRoles;
+    Map<String, Role> mapRoles;
 
     @Autowired
-    Map<String,TypeAccount> mapTypeAccount;
+    Map<String, TypeAccount> mapTypeAccount;
 
 
     @Override

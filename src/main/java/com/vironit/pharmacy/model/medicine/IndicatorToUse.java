@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "indicatorstouse")
-public class IndicatorToUse extends BaseEntity{
+public class IndicatorToUse extends BaseEntity {
 
     @Column(name = "indicator")
     private String indicator;

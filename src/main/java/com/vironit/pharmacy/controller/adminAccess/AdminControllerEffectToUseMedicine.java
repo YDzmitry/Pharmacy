@@ -22,13 +22,13 @@ public class AdminControllerEffectToUseMedicine {
     }
 
     @PutMapping("/effectToUse/update/{id}")
-    public ResponseEntity<?> updateManufacture(@PathVariable("id") long id,@RequestBody EffectToUse effectToUse){
+    public ResponseEntity<?> updateManufacture(@PathVariable("id") long id, @RequestBody EffectToUse effectToUse) {
         adminServiceEffectToUse.update(effectToUse);
         return ResponseEntity.ok().body(id);
     }
 
     @DeleteMapping("/effectToUse/delete/{id}")
-    public ResponseEntity<?> deleteManufacture(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteManufacture(@PathVariable("id") long id) {
         adminServiceEffectToUse.delete(id);
         return ResponseEntity.ok().body("IndicatorToUse has been deleted" + id);
     }

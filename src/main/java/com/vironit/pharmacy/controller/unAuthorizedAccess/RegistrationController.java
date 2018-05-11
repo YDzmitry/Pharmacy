@@ -5,7 +5,6 @@ import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.MainService;
 import com.vironit.pharmacy.service.UserServiceImpl;
 import com.vironit.pharmacy.util.NoCheckingActualSession;
 import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
@@ -40,12 +39,12 @@ public class RegistrationController {
     }
 
     @ExceptionHandler(RegistrationValidatorException.class)
-    public ResponseEntity<?> handleRegistrationValidatorException(RegistrationValidatorException ex){
+    public ResponseEntity<?> handleRegistrationValidatorException(RegistrationValidatorException ex) {
         return ResponseEntity.ok().body(ex.getErrMessageMap());
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<?> handlePSQLException(Exception ex){
+    public ResponseEntity<?> handlePSQLException(Exception ex) {
         return ResponseEntity.ok().body(creatingNewUserValidatorPostgresSql.validate(ex));
     }
 

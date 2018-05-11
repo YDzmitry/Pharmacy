@@ -29,13 +29,13 @@ public class AdminControllerManufacture {
     }
 
     @PutMapping("/manufacture/update/{id}")
-    public ResponseEntity<?> updateManufacture(@PathVariable("id") long id,@RequestBody Manufacture manufacture){
+    public ResponseEntity<?> updateManufacture(@PathVariable("id") long id, @RequestBody Manufacture manufacture) {
         adminServiceManufacture.update(manufacture);
         return ResponseEntity.ok().body(id);
     }
 
     @DeleteMapping("/manufacture/delete/{id}")
-    public ResponseEntity<?> deleteManufacture(@PathVariable("id") long id){
+    public ResponseEntity<?> deleteManufacture(@PathVariable("id") long id) {
         adminServiceManufacture.delete(id);
         return ResponseEntity.ok().body("Manufacture has been deleted" + id);
     }

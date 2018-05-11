@@ -5,7 +5,7 @@ import com.vironit.pharmacy.model.user.TypeAccount;
 import java.io.IOException;
 import java.util.List;
 
-public interface TypeAccountDao extends EnumDao<TypeAccount>{
+public interface TypeAccountDao extends EnumDao<TypeAccount> {
     @Override
     List<TypeAccount> getAll() throws IOException;
 }

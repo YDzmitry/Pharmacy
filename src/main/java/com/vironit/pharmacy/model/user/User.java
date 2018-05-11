@@ -1,7 +1,6 @@
 package com.vironit.pharmacy.model.user;
 
 
-
 import com.vironit.pharmacy.model.BaseEntity;
 import org.hibernate.annotations.NaturalId;
 

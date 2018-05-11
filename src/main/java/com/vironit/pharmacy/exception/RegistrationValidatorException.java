@@ -7,12 +7,12 @@ import java.util.Map;
 @Configuration
 public class RegistrationValidatorException extends RuntimeException {
 
-    private Map<String,String> errMessageMap;
+    private Map<String, String> errMessageMap;
 
     public RegistrationValidatorException() {
     }
 
-    public RegistrationValidatorException(Map<String,String> errMessageMap) {
+    public RegistrationValidatorException(Map<String, String> errMessageMap) {
         this.errMessageMap = errMessageMap;
     }
 

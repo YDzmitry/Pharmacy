@@ -4,7 +4,6 @@ import com.vironit.pharmacy.dao.Dao;
 import com.vironit.pharmacy.model.medicine.Medicine;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,7 +30,7 @@ public class MedicineDao implements Dao<Medicine> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Medicine> getAll()  {
+    public List<Medicine> getAll() {
         List<Medicine> medicineList = sessionFactory.getCurrentSession().createQuery("from Medicine ").list();
         for (Medicine medicine : medicineList) {
             logger.info("Medicine List::" + medicine);
@@ -41,7 +40,7 @@ public class MedicineDao implements Dao<Medicine> {
 
     @Override
     public Medicine getByPK(Long key) {
-        Medicine medicine =  sessionFactory.getCurrentSession().get(Medicine.class, key);
+        Medicine medicine = sessionFactory.getCurrentSession().get(Medicine.class, key);
         logger.info("Medicine loaded successfully, Medicine details=" + key);
         return medicine;
     }

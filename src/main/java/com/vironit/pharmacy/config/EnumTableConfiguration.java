@@ -28,11 +28,11 @@ public class EnumTableConfiguration {
     @Bean
     @Scope("singleton")
     @SuppressWarnings("unchecked")
-    public Map<String,Role> getRoles() throws IOException {
+    public Map<String, Role> getRoles() throws IOException {
         List<Role> list = roleDao.getAll();
-        Map<String,Role> map = new HashMap<>();
+        Map<String, Role> map = new HashMap<>();
         for (Role role : list) {
-            map.put(role.getRole(),role);
+            map.put(role.getRole(), role);
         }
         return map;
     }
@@ -41,11 +41,11 @@ public class EnumTableConfiguration {
     @Bean
     @Scope("singleton")
     @SuppressWarnings("unchecked")
-    public Map<String,TypeAccount> getTypesAccount() throws IOException {
+    public Map<String, TypeAccount> getTypesAccount() throws IOException {
         List<TypeAccount> list = typeAccountDao.getAll();
-        Map<String,TypeAccount> map = new HashMap<>();
+        Map<String, TypeAccount> map = new HashMap<>();
         for (TypeAccount typeAccount : list) {
-            map.put(typeAccount.getType(),typeAccount);
+            map.put(typeAccount.getType(), typeAccount);
         }
         return map;
     }

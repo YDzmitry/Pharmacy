@@ -4,7 +4,6 @@ package com.vironit.pharmacy.controller.unAuthorizedAccess;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.LoginValidatorException;
 import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.MainService;
 import com.vironit.pharmacy.service.UserServiceImpl;
 import com.vironit.pharmacy.util.NoCheckingActualSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +27,13 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<?> enter(@Valid @RequestBody RegistrationAndLoginUser loginUser, HttpSession httpSession) {
         User user = userService.getByLoginAndPassword(loginUser);
-        httpSession.setAttribute("idUser",user.getId());
-        httpSession.setAttribute("roleUser",user.getRole());
+        httpSession.setAttribute("idUser", user.getId());
+        httpSession.setAttribute("roleUser", user.getRole());
         return ResponseEntity.ok().body(user);
     }
 
     @ExceptionHandler(LoginValidatorException.class)
-    public ResponseEntity handleInvalidCredentials(LoginValidatorException ex){
+    public ResponseEntity handleInvalidCredentials(LoginValidatorException ex) {
         return ResponseEntity.ok().body(ex.getErrMessageMap());
     }
 

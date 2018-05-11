@@ -2,17 +2,16 @@ package com.vironit.pharmacy.model.user;
 
 import com.vironit.pharmacy.model.BaseEntity;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "typeaccount")
 public class TypeAccount extends BaseEntity {
 
 
-    @Column (name = "type")
+    @Column(name = "type")
     private String type;
 
     public TypeAccount(String type) {

@@ -1,8 +1,6 @@
 package com.vironit.pharmacy.exception;
 
-import java.util.Map;
-
-public class CustomGenericException extends  RuntimeException {
+public class CustomGenericException extends RuntimeException {
 
     public CustomGenericException() {
         super();

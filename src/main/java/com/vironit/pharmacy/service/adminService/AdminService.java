@@ -2,8 +2,6 @@ package com.vironit.pharmacy.service.adminService;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 public interface AdminService<T> {
 
     @Transactional

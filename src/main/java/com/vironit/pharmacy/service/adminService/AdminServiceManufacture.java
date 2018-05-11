@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @Scope("request")
 @Transactional(readOnly = true)
-public class AdminServiceManufacture implements AdminService<Manufacture>{
+public class AdminServiceManufacture implements AdminService<Manufacture> {
 
     @Autowired
     private ManufactureDao manufactureDao;

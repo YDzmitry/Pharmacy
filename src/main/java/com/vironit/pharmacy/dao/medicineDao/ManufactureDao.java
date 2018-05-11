@@ -47,7 +47,7 @@ public class ManufactureDao implements MainComponentMedicineDao<Manufacture> {
     }
 
     public Manufacture getByPK(long id) {
-        Manufacture manufacture=  sessionFactory.getCurrentSession().get(Manufacture.class, id);
+        Manufacture manufacture = sessionFactory.getCurrentSession().get(Manufacture.class, id);
         logger.info("Manufacture loaded successfully, manufacture details=" + manufacture);
         return manufacture;
     }
