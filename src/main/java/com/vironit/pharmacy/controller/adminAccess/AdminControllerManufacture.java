@@ -1,7 +1,7 @@
 package com.vironit.pharmacy.controller.adminAccess;
 
 import com.vironit.pharmacy.model.medicine.Manufacture;
-import com.vironit.pharmacy.service.AdminServiceManufacture;
+import com.vironit.pharmacy.service.adminService.AdminServiceManufacture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;

@@ -31,7 +31,7 @@ public class RegistrationController {
     CreatingNewUserErrorValidator creatingNewUserValidatorPostgresSql;
 
     @PostMapping("/createNewUser")
-    public ResponseEntity<?> save(@Valid @RequestBody RegistrationAndLoginUser newRegistrationUser) {
+    public ResponseEntity<?> saveNewRegistrationUser(@Valid @RequestBody RegistrationAndLoginUser newRegistrationUser) {
         User user = converter.convert(newRegistrationUser);
         userService.save(user);
         return ResponseEntity.ok().body(HttpStatus.ACCEPTED);

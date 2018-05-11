@@ -1,4 +1,4 @@
-package com.vironit.pharmacy.service;
+package com.vironit.pharmacy.service.adminService;
 
 
 import com.vironit.pharmacy.dao.medicineDao.ManufactureDao;
@@ -13,12 +13,13 @@ import java.util.List;
 @Service
 @Scope("request")
 @Transactional(readOnly = true)
-public class AdminServiceManufacture {
+public class AdminServiceManufacture implements AdminService<Manufacture>{
 
     @Autowired
     private ManufactureDao manufactureDao;
 
     @Transactional
+    @Override
     public long save(Manufacture manufacture) {
         return manufactureDao.create(manufacture);
     }
@@ -32,11 +33,13 @@ public class AdminServiceManufacture {
     }
 
     @Transactional
+    @Override
     public void update(Manufacture manufacture) {
         manufactureDao.update(manufacture);
     }
 
     @Transactional
+    @Override
     public void delete(long id) {
         manufactureDao.delete(id);
     }
