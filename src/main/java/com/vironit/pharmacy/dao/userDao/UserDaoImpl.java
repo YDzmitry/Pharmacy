@@ -1,4 +1,4 @@
-package com.vironit.pharmacy.dao;
+package com.vironit.pharmacy.dao.userDao;
 
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.CustomGenericException;
@@ -40,8 +40,9 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getByPK(Long key) throws CustomGenericException {
+        User user =  sessionFactory.getCurrentSession().get(User.class, key);
         logger.info("Person loaded successfully, Person details=" + key);
-        return sessionFactory.getCurrentSession().get(User.class, key);
+        return user;
     }
 
     @Override

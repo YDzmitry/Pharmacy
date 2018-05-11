@@ -41,6 +41,6 @@ public class LoginController {
     public ResponseEntity handleAllException(Exception ex) {
         return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
     }
-    //TODO может это сделать аспектом?
+    //TODO может это сделать аспектом? ControllerAdvice
 
 }

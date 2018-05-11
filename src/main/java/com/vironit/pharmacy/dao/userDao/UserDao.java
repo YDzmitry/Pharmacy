@@ -1,5 +1,6 @@
-package com.vironit.pharmacy.dao;
+package com.vironit.pharmacy.dao.userDao;
 
+import com.vironit.pharmacy.dao.Dao;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.model.user.User;

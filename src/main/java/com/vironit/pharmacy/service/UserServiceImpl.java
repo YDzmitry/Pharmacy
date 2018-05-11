@@ -1,6 +1,6 @@
 package com.vironit.pharmacy.service;
 
-import com.vironit.pharmacy.dao.UserDaoImpl;
+import com.vironit.pharmacy.dao.userDao.UserDaoImpl;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.LoginValidatorException;
 import com.vironit.pharmacy.model.user.User;
