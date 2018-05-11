@@ -5,7 +5,8 @@ import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.UserService;
+import com.vironit.pharmacy.service.MainService;
+import com.vironit.pharmacy.service.UserServiceImpl;
 import com.vironit.pharmacy.util.NoCheckingActualSession;
 import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import javax.validation.Valid;
 public class RegistrationController {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
     @Autowired
     NewRegistrationUserToUserConverter converter;
     @Autowired

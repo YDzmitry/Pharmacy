@@ -1,7 +1,8 @@
 package com.vironit.pharmacy.controller;
 
 import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.UserService;
+import com.vironit.pharmacy.service.MainService;
+import com.vironit.pharmacy.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @PostMapping("/user")
     public ResponseEntity<?> save(@RequestBody User user) {
@@ -24,7 +25,7 @@ public class MainController {
 
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<User> get(@PathVariable("id") long id) {
+    public ResponseEntity<?> get(@PathVariable("id") long id) {
         User user = userService.getByPK(id);
         return ResponseEntity.ok().body(user);
     }

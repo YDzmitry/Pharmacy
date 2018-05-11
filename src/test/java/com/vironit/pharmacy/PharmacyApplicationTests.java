@@ -1,6 +1,6 @@
 package com.vironit.pharmacy;
 
-import com.vironit.pharmacy.service.UserService;
+import com.vironit.pharmacy.service.MainService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class PharmacyApplicationTests {
 
 	@Autowired
-	UserService userService;
+	MainService userService;
 
 	@Test
 	public void contextLoads() {

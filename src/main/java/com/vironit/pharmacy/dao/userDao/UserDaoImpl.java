@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public Long create(User user) throws CustomGenericException {
+    public Long create(User user) {
         Long id = (Long) sessionFactory.getCurrentSession().save(user);
         logger.info("Person saved successfully, Person Details=" + user);
         return id;
@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<User> getAll() throws CustomGenericException {
+    public List<User> getAll() {
         List<User> usersList = sessionFactory.getCurrentSession().createQuery("from User").list();
         for (User user : usersList) {
             logger.info("Person List::" + user);
@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getByPK(Long key) throws CustomGenericException {
+    public User getByPK(Long key) {
         User user =  sessionFactory.getCurrentSession().get(User.class, key);
         logger.info("Person loaded successfully, Person details=" + key);
         return user;
@@ -47,8 +47,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
-        logger.info("Person updated successfully, Person Details=" + user);
         sessionFactory.getCurrentSession().update(user);
+        logger.info("Person updated successfully, Person Details=" + user);
     }
 
     @Override
@@ -57,7 +57,6 @@ public class UserDaoImpl implements UserDao {
         logger.info("Person deleted successfully");
     }
 
-    @Override
     public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Session session = sessionFactory.getCurrentSession();
         String hql = "from User Where login = :login and password = :password";

@@ -17,7 +17,7 @@ import java.util.Map;
 @Service
 @Scope("request")
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements MainService<User> {
 
     @Autowired
     private UserDaoImpl userDao;
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         userDao.delete(id);
     }
 
-    @Override
+
     public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Map<String, String> errMessageMap = new HashMap<>();
         User user;

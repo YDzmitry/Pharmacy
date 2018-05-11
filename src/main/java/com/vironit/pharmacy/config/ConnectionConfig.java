@@ -1,5 +1,6 @@
 package com.vironit.pharmacy.config;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -49,11 +50,13 @@ public class ConnectionConfig {
         props.put(C3P0_TIMEOUT, env.getProperty("hibernate.c3p0.timeout"));
         props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
 
+
         factoryBean.setHibernateProperties(props);
         factoryBean.setPackagesToScan("com.vironit.pharmacy.model");
 
         return factoryBean;
     }
+
 
     @Bean
     public HibernateTransactionManager getTransactionManager() {
