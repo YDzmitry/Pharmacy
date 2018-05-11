@@ -19,4 +19,8 @@ public class EffectToUse extends BaseEntity {
 
     public EffectToUse() {
     }
+
+    public String getEffect() {
+        return effect;
+    }
 }

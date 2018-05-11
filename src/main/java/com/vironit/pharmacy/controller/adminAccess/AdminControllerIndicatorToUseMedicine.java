@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @Scope("request")
 @RestController
-public class AdminControllerIndicator {
+public class AdminControllerIndicatorToUseMedicine {
 
     @Autowired
     AdminServiceIndicatorToUse adminServiceIndicator;

@@ -19,4 +19,8 @@ public class IndicatorToUse extends BaseEntity{
 
     public IndicatorToUse() {
     }
+
+    public String getIndicator() {
+        return indicator;
+    }
 }
