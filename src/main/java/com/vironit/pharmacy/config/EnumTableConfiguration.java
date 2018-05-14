@@ -26,7 +26,6 @@ public class EnumTableConfiguration {
     TypeAccountDao typeAccountDao;
 
     @Bean
-    @Scope("singleton")
     @SuppressWarnings("unchecked")
     public Map<String, Role> getRoles() throws IOException {
         List<Role> list = roleDao.getAll();
@@ -39,7 +38,6 @@ public class EnumTableConfiguration {
 
 
     @Bean
-    @Scope("singleton")
     @SuppressWarnings("unchecked")
     public Map<String, TypeAccount> getTypesAccount() throws IOException {
         List<TypeAccount> list = typeAccountDao.getAll();
