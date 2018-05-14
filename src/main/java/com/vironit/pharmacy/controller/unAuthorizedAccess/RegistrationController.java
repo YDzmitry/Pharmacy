@@ -28,7 +28,7 @@ public class RegistrationController {
     @Autowired
     NewRegistrationUserToUserConverter converter;
     @Autowired
-    CreatingNewUserErrorValidator creatingNewUserValidatorPostgresSql;
+    CreatingNewUserErrorValidator creatingNewUserErrorValidator;
 
     @PostMapping("/createNewUser")
     public ResponseEntity<?> saveNewRegistrationUser(@Valid @RequestBody RegistrationAndLoginUser newRegistrationUser) {
@@ -45,7 +45,7 @@ public class RegistrationController {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<?> handlePSQLException(Exception ex) {
-        return ResponseEntity.ok().body(creatingNewUserValidatorPostgresSql.validate(ex));
+        return ResponseEntity.ok().body(creatingNewUserErrorValidator.validate(ex));
     }
 
     @ExceptionHandler(Exception.class)
