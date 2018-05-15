@@ -22,14 +22,14 @@ public class UserAddress extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private CustomerUser customerUser;
 
-    public UserAddress(String country, String city, String street, String house, User user) {
+    public UserAddress(String country, String city, String street, String house, CustomerUser customerUser) {
         this.country = country;
         this.city = city;
         this.street = street;
         this.house = house;
-        this.user = user;
+        this.customerUser = customerUser;
     }
 
     public UserAddress() {
@@ -51,7 +51,8 @@ public class UserAddress extends BaseEntity {
         return house;
     }
 
-    public User getUser() {
-        return user;
+    public CustomerUser getCustomerUser() {
+        return customerUser;
     }
+    
 }

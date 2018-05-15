@@ -5,9 +5,10 @@ import com.vironit.pharmacy.model.BaseEntity;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-
-@Entity
-@Table(name = "users")
+//
+//@Entity
+//@Table(name = "users")
+@MappedSuperclass
 public class User extends BaseEntity {
 
     @NaturalId
@@ -61,9 +62,8 @@ public class User extends BaseEntity {
         this.role = role;
     }
 
-
-    public String getTypeAccount() {
-        return typeAccount.getType();
+    public TypeAccount getTypeAccount() {
+        return typeAccount;
     }
 
     public void setTypeAccount(TypeAccount typeAccount) {

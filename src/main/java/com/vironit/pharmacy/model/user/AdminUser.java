@@ -6,4 +6,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class AdminUser extends User {
+
+    public AdminUser(String login, String password, TypeAccount typeAccount, Role role) {
+        super(login, password, typeAccount, role);
+
+    }
+
+    public AdminUser() {
+    }
 }

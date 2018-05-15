@@ -22,7 +22,7 @@ public class CustomerUser extends User {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "customerUser")
     @Column
     private Set<UserAddress> addressDeliveryList;
 
