@@ -20,7 +20,7 @@ public class UserAddress extends BaseEntity {
     @Column(name = "house")
     private String house;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

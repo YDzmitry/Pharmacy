@@ -16,7 +16,7 @@ public class Medicine extends BaseEntity {
     private Boolean receiptIsNeed;
 
     @Column(name = "price")
-    private Integer price;
+    private Double price;
 
     @ManyToOne
     @JoinColumn(name = "manufacture_id")
@@ -37,10 +37,11 @@ public class Medicine extends BaseEntity {
     private Set<IndicatorToUse> indicatorsToUseList;
 
 
-    public Medicine(String description, boolean receiptIsNeed, int price, Set<EffectToUse> effectToUseList, Set<IndicatorToUse> indicatorsToUseList) {
+    public Medicine(String description, Boolean receiptIsNeed, Double price, Manufacture manufactor, Set<EffectToUse> effectToUseList, Set<IndicatorToUse> indicatorsToUseList) {
         this.description = description;
         this.receiptIsNeed = receiptIsNeed;
         this.price = price;
+        this.manufactor = manufactor;
         this.effectToUseList = effectToUseList;
         this.indicatorsToUseList = indicatorsToUseList;
     }
@@ -56,7 +57,7 @@ public class Medicine extends BaseEntity {
         return receiptIsNeed;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 

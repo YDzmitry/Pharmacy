@@ -12,7 +12,7 @@ import java.util.List;
 public class Order extends BaseEntity {
 
     @Column(name = "amount")
-    private Integer amount;
+    private Double amount;
 
     @ManyToOne
     @JoinColumn(name = "order_type")
@@ -30,7 +30,7 @@ public class Order extends BaseEntity {
     private List<Medicine> medicineList;
 
 
-    public Order(Integer amount, OrderType orderType, UserAddress address, List<Medicine> medicineList) {
+    public Order(Double amount, OrderType orderType, UserAddress address, List<Medicine> medicineList) {
         this.amount = amount;
         this.orderType = orderType;
         this.address = address;

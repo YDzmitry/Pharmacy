@@ -1,0 +1,60 @@
+package com.vironit.pharmacy.model.user;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.Set;
+
+@Entity
+@Table(name = "users")
+public class CustomerUser extends User {
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "balance")
+    private Double balance;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @OneToMany(mappedBy = "user")
+    @Column
+    private Set<UserAddress> addressDeliveryList;
+
+    public CustomerUser() {
+    }
+
+    public CustomerUser(String login, String password, TypeAccount typeAccount, Role role, String name, String surname, Double balance, String phone, Set<UserAddress> addressDeliveryList) {
+        super(login, password, typeAccount, role);
+        this.name = name;
+        this.surname = surname;
+        this.balance = balance;
+        this.phone = phone;
+        this.addressDeliveryList = addressDeliveryList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Set<UserAddress> getAddressDeliveryList() {
+        return addressDeliveryList;
+    }
+}
