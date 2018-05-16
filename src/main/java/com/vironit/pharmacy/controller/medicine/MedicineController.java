@@ -1,4 +1,4 @@
-package com.vironit.pharmacy.controller;
+package com.vironit.pharmacy.controller.medicine;
 
 
 import com.vironit.pharmacy.model.medicine.Medicine;

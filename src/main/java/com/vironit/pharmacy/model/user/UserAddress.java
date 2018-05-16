@@ -20,7 +20,7 @@ public class UserAddress extends BaseEntity {
     @Column(name = "house")
     private String house;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private CustomerUser customerUser;
 

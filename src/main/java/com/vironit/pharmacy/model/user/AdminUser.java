@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class AdminUser extends User {
+public class AdminUser extends MainUser {
 
     public AdminUser(String login, String password, TypeAccount typeAccount, Role role) {
         super(login, password, typeAccount, role);

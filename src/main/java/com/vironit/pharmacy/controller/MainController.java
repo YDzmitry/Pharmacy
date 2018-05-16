@@ -1,7 +1,7 @@
 package com.vironit.pharmacy.controller;
 
-import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.UserServiceImpl;
+import com.vironit.pharmacy.model.user.MainUser;
+import com.vironit.pharmacy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @PostMapping("/user")
-    public ResponseEntity<?> save(@RequestBody User user) {
+    public ResponseEntity<?> save(@RequestBody MainUser user) {
         long id = userService.save(user);
         return ResponseEntity.ok().body("New User has been saved with ID:" + id);
     }
@@ -25,12 +25,12 @@ public class MainController {
 
     @GetMapping("/user/{id}")
     public ResponseEntity<?> get(@PathVariable("id") long id) {
-        User user = userService.getByPK(id);
+        MainUser user = userService.getByPK(id);
         return ResponseEntity.ok().body(user);
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody User user) {
+    public ResponseEntity<?> update(@PathVariable("id") long id, @RequestBody MainUser user) {
         userService.update(user);
         return ResponseEntity.ok().body("User has been updated " + id);
     }

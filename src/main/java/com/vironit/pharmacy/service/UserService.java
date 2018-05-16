@@ -3,7 +3,7 @@ package com.vironit.pharmacy.service;
 import com.vironit.pharmacy.dao.userDao.UserDaoImpl;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.LoginValidatorException;
-import com.vironit.pharmacy.model.user.User;
+import com.vironit.pharmacy.model.user.MainUser;
 import com.vironit.pharmacy.validator.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -17,7 +17,7 @@ import java.util.Map;
 @Service
 @Scope("request")
 @Transactional(readOnly = true)
-public class UserServiceImpl implements MainService<User> {
+public class UserService implements MainService<MainUser> {
 
     @Autowired
     private UserDaoImpl userDao;
@@ -27,24 +27,24 @@ public class UserServiceImpl implements MainService<User> {
 
     @Transactional
     @Override
-    public long save(User user) {
+    public long save(MainUser user) {
         registrationValidator.validate(user.getLogin(), user.getPassword());
         return userDao.create(user);
     }
 
     @Override
-    public User getByPK(long id) {
+    public MainUser getByPK(long id) {
         return userDao.getByPK(id);
     }
 
     @Override
-    public List<User> list() {
+    public List<MainUser> list() {
         return userDao.getAll();
     }
 
     @Transactional
     @Override
-    public void update(User user) {
+    public void update(MainUser user) {
         userDao.update(user);
     }
 
@@ -55,9 +55,9 @@ public class UserServiceImpl implements MainService<User> {
     }
 
 
-    public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
+    public MainUser getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Map<String, String> errMessageMap = new HashMap<>();
-        User user;
+        MainUser user;
         try {
             user = userDao.getByLoginAndPassword(loginUser);
         } catch (IndexOutOfBoundsException ex) {

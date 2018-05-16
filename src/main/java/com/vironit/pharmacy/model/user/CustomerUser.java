@@ -1,14 +1,11 @@
 package com.vironit.pharmacy.model.user;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class CustomerUser extends User {
+public class CustomerUser extends MainUser {
 
     @Column(name = "name")
     private String name;
@@ -22,7 +19,7 @@ public class CustomerUser extends User {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "customerUser")
+    @OneToMany(mappedBy = "customerUser",fetch = FetchType.EAGER)
     @Column
     private Set<UserAddress> addressDeliveryList;
 

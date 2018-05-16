@@ -1,4 +1,4 @@
-package com.vironit.pharmacy.controller.adminAccess;
+package com.vironit.pharmacy.controller.medicine.adminAccess;
 
 import com.vironit.pharmacy.model.medicine.IndicatorToUse;
 import com.vironit.pharmacy.service.adminService.AdminServiceIndicatorToUse;

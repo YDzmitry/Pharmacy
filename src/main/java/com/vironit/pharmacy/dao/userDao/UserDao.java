@@ -3,26 +3,26 @@ package com.vironit.pharmacy.dao.userDao;
 import com.vironit.pharmacy.dao.Dao;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.CustomGenericException;
-import com.vironit.pharmacy.model.user.User;
+import com.vironit.pharmacy.model.user.MainUser;
 
 import java.util.List;
 
-public interface UserDao extends Dao<User> {
+public interface UserDao extends Dao<MainUser> {
 
     @Override
-    Long create(User user) throws CustomGenericException;
+    Long create(MainUser user) throws CustomGenericException;
 
     @Override
-    List<User> getAll() throws CustomGenericException;
+    List<MainUser> getAll() throws CustomGenericException;
 
     @Override
-    User getByPK(Long key) throws CustomGenericException;
+    MainUser getByPK(Long key) throws CustomGenericException;
 
     @Override
-    void update(User user);
+    void update(MainUser user);
 
     @Override
     void delete(long id);
 
-    User getByLoginAndPassword(RegistrationAndLoginUser loginUser);
+    MainUser getByLoginAndPassword(RegistrationAndLoginUser loginUser);
 }

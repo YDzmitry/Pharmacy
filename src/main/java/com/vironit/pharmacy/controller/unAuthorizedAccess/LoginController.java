@@ -3,8 +3,8 @@ package com.vironit.pharmacy.controller.unAuthorizedAccess;
 
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.LoginValidatorException;
-import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.UserServiceImpl;
+import com.vironit.pharmacy.model.user.MainUser;
+import com.vironit.pharmacy.service.UserService;
 import com.vironit.pharmacy.util.NoCheckingActualSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -22,11 +22,11 @@ import javax.validation.Valid;
 public class LoginController {
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<?> enter(@Valid @RequestBody RegistrationAndLoginUser loginUser, HttpSession httpSession) {
-        User user = userService.getByLoginAndPassword(loginUser);
+        MainUser user = userService.getByLoginAndPassword(loginUser);
         httpSession.setAttribute("idUser", user.getId());
         httpSession.setAttribute("roleUser", user.getRole());
         return ResponseEntity.ok().body(user);

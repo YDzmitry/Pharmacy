@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class ManagerUser extends User {
+public class ManagerUser extends MainUser {
 
     @Column(name = "passport")
     private String passport;

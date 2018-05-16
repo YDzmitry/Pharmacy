@@ -4,8 +4,8 @@ package com.vironit.pharmacy.controller.unAuthorizedAccess;
 import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
-import com.vironit.pharmacy.model.user.User;
-import com.vironit.pharmacy.service.UserServiceImpl;
+import com.vironit.pharmacy.model.user.MainUser;
+import com.vironit.pharmacy.service.UserService;
 import com.vironit.pharmacy.util.NoCheckingActualSession;
 import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import javax.validation.Valid;
 public class RegistrationController {
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
     @Autowired
     NewRegistrationUserToUserConverter converter;
     @Autowired
@@ -32,7 +32,7 @@ public class RegistrationController {
 
     @PostMapping("/createNewUser")
     public ResponseEntity<?> saveNewRegistrationUser(@Valid @RequestBody RegistrationAndLoginUser newRegistrationUser) {
-        User user = converter.convert(newRegistrationUser);
+        MainUser user = converter.convert(newRegistrationUser);
         userService.save(user);
         return ResponseEntity.ok().body(HttpStatus.ACCEPTED);
         //TODO что возвращать?
