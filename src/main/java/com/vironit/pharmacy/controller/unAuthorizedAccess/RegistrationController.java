@@ -49,9 +49,8 @@ public class RegistrationController {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity handleAllException() {
+    public ResponseEntity handleAllException(Exception rx) {
         return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
     }
 
-    //TODO логгирование c помощью аспектов
 }

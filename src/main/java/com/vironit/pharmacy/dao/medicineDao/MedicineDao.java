@@ -15,8 +15,6 @@ import java.util.List;
 @Transactional
 public class MedicineDao implements Dao<Medicine> {
 
-    private static final Logger logger = LogManager.getLogger(MedicineDao.class);
-
     @Autowired
     SessionFactory sessionFactory;
 
@@ -24,36 +22,29 @@ public class MedicineDao implements Dao<Medicine> {
     @Override
     public Long create(Medicine medicine) {
         Long id = (Long) sessionFactory.getCurrentSession().save(medicine);
-        logger.info("Medicine saved successfully, Medicine Details=" + medicine);
-        return id;
+       return id;
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<Medicine> getAll() {
         List<Medicine> medicineList = sessionFactory.getCurrentSession().createQuery("from Medicine ").list();
-        for (Medicine medicine : medicineList) {
-            logger.info("Medicine List::" + medicine);
-        }
         return medicineList;
     }
 
     @Override
     public Medicine getByPK(Long key) {
         Medicine medicine = sessionFactory.getCurrentSession().get(Medicine.class, key);
-        logger.info("Medicine loaded successfully, Medicine details=" + key);
         return medicine;
     }
 
     @Override
     public void update(Medicine medicine) {
         sessionFactory.getCurrentSession().update(medicine);
-        logger.info("Person updated successfully, Person Details=" + medicine);
     }
 
     @Override
     public void delete(long id) {
         sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(Medicine.class, id));
-        logger.info("Person deleted successfully");
     }
 }

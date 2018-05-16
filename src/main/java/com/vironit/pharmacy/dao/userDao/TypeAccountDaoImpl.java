@@ -13,14 +13,11 @@ import java.util.List;
 @Repository
 public class TypeAccountDaoImpl implements TypeAccountDao {
 
-    private static final Logger logger = LogManager.getLogger(TypeAccountDaoImpl.class);
-
     @Autowired
     private SessionFactory sessionFactory;
 
     @SuppressWarnings("unchecked")
     public List<TypeAccount> getAll() throws IOException {
-        logger.info("Type of accounts has been uploaded");
         return sessionFactory.getCurrentSession().createQuery("from TypeAccount").list();
     }
 

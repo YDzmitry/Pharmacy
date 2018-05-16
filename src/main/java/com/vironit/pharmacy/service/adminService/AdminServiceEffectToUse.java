@@ -15,6 +15,7 @@ public class AdminServiceEffectToUse implements AdminService<EffectToUse> {
     @Autowired
     private EffectToUseDao effectToUseDao;
 
+    @Transactional
     @Override
     public long save(EffectToUse effectToUse) {
         return effectToUseDao.create(effectToUse);

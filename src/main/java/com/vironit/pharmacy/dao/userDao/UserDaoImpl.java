@@ -14,16 +14,12 @@ import java.util.List;
 @Repository
 public class UserDaoImpl implements UserDao {
 
-
-    private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
-
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
     public Long create(User user) {
         Long id = (Long) sessionFactory.getCurrentSession().save(user);
-        logger.info("Person saved successfully, Person Details=" + user);
         return id;
     }
 
@@ -31,29 +27,23 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     public List<User> getAll() {
         List<User> usersList = sessionFactory.getCurrentSession().createQuery("from User").list();
-        for (User user : usersList) {
-            logger.info("Person List::" + user);
-        }
         return usersList;
     }
 
     @Override
     public User getByPK(Long key) {
         User user = sessionFactory.getCurrentSession().get(User.class, key);
-        logger.info("Person loaded successfully, Person details=" + key);
         return user;
     }
 
     @Override
     public void update(User user) {
         sessionFactory.getCurrentSession().update(user);
-        logger.info("Person updated successfully, Person Details=" + user);
     }
 
     @Override
     public void delete(long id) {
         sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(User.class, id));
-        logger.info("Person deleted successfully");
     }
 
     public User getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
