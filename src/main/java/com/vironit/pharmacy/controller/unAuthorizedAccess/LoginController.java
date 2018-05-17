@@ -36,10 +36,5 @@ public class LoginController {
         return ResponseEntity.ok().body(ex.getErrMessageMap());
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity handleAllException(Exception ex) {
-        return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
-    }
-    //TODO может это сделать аспектом? ControllerAdvice
 
 }

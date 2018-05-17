@@ -1,7 +1,9 @@
 package com.vironit.pharmacy.config;
 
+import com.vironit.pharmacy.dao.OrderTypeDao;
 import com.vironit.pharmacy.dao.userDao.RoleDao;
 import com.vironit.pharmacy.dao.userDao.TypeAccountDao;
+import com.vironit.pharmacy.model.order.OrderType;
 import com.vironit.pharmacy.model.user.Role;
 import com.vironit.pharmacy.model.user.TypeAccount;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,10 @@ public class EnumTableConfiguration {
     @Autowired
     TypeAccountDao typeAccountDao;
 
+    @Autowired
+    OrderTypeDao orderTypeDao;
+
+
     @Bean
     @SuppressWarnings("unchecked")
     public Map<String, Role> getRoles() throws IOException {
@@ -44,6 +50,17 @@ public class EnumTableConfiguration {
         Map<String, TypeAccount> map = new HashMap<>();
         for (TypeAccount typeAccount : list) {
             map.put(typeAccount.getType(), typeAccount);
+        }
+        return map;
+    }
+
+    @Bean
+    @SuppressWarnings("unchecked")
+    public Map<String, OrderType> getOrderTypes() throws IOException {
+        List<OrderType> list = orderTypeDao.getAll();
+        Map<String, OrderType> map = new HashMap<>();
+        for (OrderType orderType : list) {
+            map.put(orderType.getType(), orderType);
         }
         return map;
     }

@@ -15,7 +15,7 @@ public class SessionValidatorExceptionAspect {
 
     @Before("execution(* com.vironit.pharmacy.controller..*(..))" +
             "&& !@target(com.vironit.pharmacy.util.NoCheckingActualSession)")
-    public void validateBefore() {
+    public void validateBeforeAccessToAuthorizedResources() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(false);
         try {
