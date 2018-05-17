@@ -17,7 +17,7 @@ public class MedicineController {
     MedicineService medicineService;
 
     @AdminAccessOnly
-    @PostMapping("/medicine")
+    @PostMapping("/medicine/save")
     public ResponseEntity<?> saveMedicine(@RequestBody Medicine medicine) {
         long id = medicineService.save(medicine);
         return ResponseEntity.ok().body("New Medicine has been saved with ID:" + id);

@@ -21,12 +21,6 @@ public class AdminControllerManufacture {
     }
 
 
-    @GetMapping("/manufacture/get/{id}")
-    public ResponseEntity<Manufacture> getManufactureById(@PathVariable("id") long id) {
-        Manufacture manufacture = adminServiceManufacture.getByPK(id);
-        return ResponseEntity.ok().body(manufacture);
-    }
-
     @PutMapping("/manufacture/update/{id}")
     public ResponseEntity<?> updateManufacture(@PathVariable("id") long id, @RequestBody Manufacture manufacture) {
         adminServiceManufacture.update(manufacture);

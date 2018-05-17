@@ -14,11 +14,32 @@ import javax.servlet.http.HttpSession;
 public class UserRoleValidatorExceptionAspect {
 
     @Before("@annotation(com.vironit.pharmacy.util.AdminAccessOnly)")
-    public void validateBefore() {
+    public void validateBeforeAccessToAdminFunctionality() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(false);
         String userRole = (String) session.getAttribute("roleUser");
         if (!userRole.equals("ADMIN")) {
+            throw new CustomGenericException("Restricted for your role");
+        }
+    }
+
+    @Before("@annotation(com.vironit.pharmacy.util.CustomerAccessOnly)")
+    public void validateBeforeAccessToCustomerFunctionality() {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(false);
+        String userRole = (String) session.getAttribute("roleUser");
+        if (!userRole.equals("CUSTOMER")) {
+            throw new CustomGenericException("Restricted for your role");
+        }
+    }
+
+
+    @Before("@annotation(com.vironit.pharmacy.util.ManagerAccessOnly)")
+    public void validateBeforeAccessToManagerFunctionality() {
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(false);
+        String userRole = (String) session.getAttribute("roleUser");
+        if (!userRole.equals("MANAGER")) {
             throw new CustomGenericException("Restricted for your role");
         }
     }
