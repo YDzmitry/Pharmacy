@@ -2,6 +2,7 @@ package com.vironit.pharmacy.controller.medicine.adminAccess;
 
 import com.vironit.pharmacy.model.medicine.EffectToUse;
 import com.vironit.pharmacy.service.adminService.AdminServiceEffectToUse;
+import com.vironit.pharmacy.util.AdminAccessOnly;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ public class AdminControllerEffectToUseMedicine {
 
     @Autowired
     AdminServiceEffectToUse adminServiceEffectToUse;
+
 
     @PostMapping("/effectToUse/save")
     public ResponseEntity<?> saveIndicatorToUse(@RequestBody EffectToUse effectToUse) {

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AdviceSessionControllerException {
 
-
     @ExceptionHandler(CustomGenericException.class)
     public ResponseEntity handleAllException(CustomGenericException ex) {
         return ResponseEntity.ok().body(ex.getMap());

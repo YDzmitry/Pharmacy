@@ -11,18 +11,15 @@ import javax.servlet.http.HttpSession;
 
 @Aspect
 @Component
-public class SessionValidatorExceptionAspect {
+public class UserRoleValidatorExceptionAspect {
 
-    @Before("execution(* com.vironit.pharmacy.controller..*(..))" +
-            "&& !@target(com.vironit.pharmacy.util.NoCheckingActualSession)")
+    @Before("@annotation(com.vironit.pharmacy.util.AdminAccessOnly)")
     public void validateBefore() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(false);
-        try {
-            session.getAttribute("idUser");
-        } catch (Exception ex) {
-            throw new CustomGenericException("no authorized");
+        String userRole = (String) session.getAttribute("roleUser");
+        if (!userRole.equals("ADMIN")) {
+            throw new CustomGenericException("Restricted for your role");
         }
     }
 }
-
