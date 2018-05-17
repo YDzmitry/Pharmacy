@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-@Scope("request")
 @Transactional(readOnly = true)
 public class UserService implements MainService<MainUser> {
 

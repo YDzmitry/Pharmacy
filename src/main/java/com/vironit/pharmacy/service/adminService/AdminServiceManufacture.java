@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Scope("request")
 @Transactional(readOnly = true)
 public class AdminServiceManufacture implements AdminService<Manufacture> {
 

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpSession;
 
 @CrossOrigin
-@Scope("request")
 @RestController
 public class LogOutController {
 

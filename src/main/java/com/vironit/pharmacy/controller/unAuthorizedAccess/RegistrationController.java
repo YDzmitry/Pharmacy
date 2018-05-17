@@ -19,7 +19,6 @@ import javax.validation.Valid;
 
 @NoCheckingActualSession
 @CrossOrigin
-@Scope("request")
 @RestController
 public class RegistrationController {
 

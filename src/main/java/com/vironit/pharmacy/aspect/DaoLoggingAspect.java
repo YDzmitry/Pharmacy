@@ -23,13 +23,13 @@ public class DaoLoggingAspect {
     }
 
     @After("execution(* com.vironit.pharmacy.dao..*(..))")
-    public void doAfterTask(JoinPoint joinPoint){
+    public void doAfterTask(){
         logger.info("Method " + currentMethod + " in class " + currentClass + " ended executing");
     }
 
 
     @AfterThrowing(pointcut = "execution(* com.vironit.pharmacy.dao..*(..))", throwing = "ex")
     public void doAfterThrowingTask(Exception ex) {
-        logger.debug("Method " + currentMethod + " in class " + currentClass + " throw exception");
+        logger.debug("Method " + currentMethod + " in class " + currentClass + " throw exception" + ex.toString());
     }
 }

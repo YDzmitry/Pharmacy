@@ -1,10 +1,12 @@
 package com.vironit.pharmacy.exception;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 @Component
+@Scope("request")
 public class LoginValidatorException extends RuntimeException {
 
     private Map<String, String> errMessageMap;

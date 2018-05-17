@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin
-@Scope("request")
 @RestController
 public class MainController {
 

@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 @Configuration
-@Scope("prototype")
 public class RegistrationValidator {
 
 

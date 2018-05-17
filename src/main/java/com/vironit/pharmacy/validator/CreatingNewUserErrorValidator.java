@@ -11,7 +11,6 @@ import java.util.Map;
 
 @CrossOrigin
 @Configuration
-@Scope("prototype")
 public class CreatingNewUserErrorValidator {
 
     private Map<String, String> errMessageMap = new HashMap<>();
