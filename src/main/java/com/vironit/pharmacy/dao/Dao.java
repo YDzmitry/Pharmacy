@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.util.List;
 
 public interface Dao<T> {
-    Long create(T t) throws IOException;
+    Long create(T t);
 
-    List<T> getAll() throws IOException;
+    List<T> getAll();
 
-    T getByPK(Long key) throws CustomGenericException;
+    T getByPK(Long key);
 
     void update(T t);
 
     void delete(long id);
+
+
 }

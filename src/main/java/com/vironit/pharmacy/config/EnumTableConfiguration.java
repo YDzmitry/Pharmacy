@@ -1,14 +1,16 @@
 package com.vironit.pharmacy.config;
 
+import com.vironit.pharmacy.dao.orderDao.OrderTypeDao;
+import com.vironit.pharmacy.dao.userDao.RoleD;
 import com.vironit.pharmacy.dao.userDao.RoleDao;
+import com.vironit.pharmacy.dao.userDao.TypeAccountD;
 import com.vironit.pharmacy.dao.userDao.TypeAccountDao;
+import com.vironit.pharmacy.model.order.OrderType;
 import com.vironit.pharmacy.model.user.Role;
 import com.vironit.pharmacy.model.user.TypeAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,15 +18,17 @@ import java.util.List;
 import java.util.Map;
 
 @Configuration
-@Transactional
 public class EnumTableConfiguration {
 
     @Autowired
-    RoleDao roleDao;
+    RoleD roleDao;
 
     @Autowired
-    TypeAccountDao typeAccountDao;
+    TypeAccountD typeAccountDao;
 
+   /* @Autowired
+    OrderTypeDao orderTypeDao;
+*/
     @Bean
     @SuppressWarnings("unchecked")
     public Map<String, Role> getRoles() throws IOException {
@@ -47,4 +51,16 @@ public class EnumTableConfiguration {
         }
         return map;
     }
+
+
+    /*@Bean
+    @SuppressWarnings("unchecked")
+    public Map<String, OrderType> getOrderTypes() throws IOException {
+        List<OrderType> list = orderTypeDao.getAll();
+        Map<String, OrderType> map = new HashMap<>();
+        for (OrderType orderType : list) {
+            map.put(orderType.getType(), orderType);
+        }
+        return map;
+    }*/
 }

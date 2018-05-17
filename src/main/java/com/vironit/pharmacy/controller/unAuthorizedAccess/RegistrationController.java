@@ -47,9 +47,5 @@ public class RegistrationController {
         return ResponseEntity.ok().body(creatingNewUserErrorValidator.validate(ex));
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity handleAllException(Exception rx) {
-        return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
-    }
 
 }

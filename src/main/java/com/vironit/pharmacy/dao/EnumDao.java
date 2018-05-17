@@ -1,4 +1,4 @@
-package com.vironit.pharmacy.dao.userDao;
+package com.vironit.pharmacy.dao;
 
 import java.io.IOException;
 import java.util.List;

@@ -22,7 +22,7 @@ public class MedicineDao implements Dao<Medicine> {
     @Override
     public Long create(Medicine medicine) {
         Long id = (Long) sessionFactory.getCurrentSession().save(medicine);
-       return id;
+        return id;
     }
 
     @Override

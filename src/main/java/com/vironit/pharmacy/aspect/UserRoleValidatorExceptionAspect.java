@@ -13,7 +13,8 @@ import javax.servlet.http.HttpSession;
 @Component
 public class UserRoleValidatorExceptionAspect {
 
-    @Before("@annotation(com.vironit.pharmacy.util.AdminAccessOnly)")
+    @Before("@annotation(com.vironit.pharmacy.util.AdminAccessOnly)"/*+
+    "|| @target(com.vironit.pharmacy.util.AdminAccessOnly)"*/)
     public void validateBeforeAccessToAdminFunctionality() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(false);
@@ -23,7 +24,8 @@ public class UserRoleValidatorExceptionAspect {
         }
     }
 
-    @Before("@annotation(com.vironit.pharmacy.util.CustomerAccessOnly)")
+    @Before("@annotation(com.vironit.pharmacy.util.CustomerAccessOnly)"+
+            "|| @target(com.vironit.pharmacy.util.CustomerAccessOnly)")
     public void validateBeforeAccessToCustomerFunctionality() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(false);
@@ -34,7 +36,8 @@ public class UserRoleValidatorExceptionAspect {
     }
 
 
-    @Before("@annotation(com.vironit.pharmacy.util.ManagerAccessOnly)")
+    @Before("@annotation(com.vironit.pharmacy.util.ManagerAccessOnly)"+
+            "|| @target(com.vironit.pharmacy.util.ManagerAccessOnly)")
     public void validateBeforeAccessToManagerFunctionality() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(false);

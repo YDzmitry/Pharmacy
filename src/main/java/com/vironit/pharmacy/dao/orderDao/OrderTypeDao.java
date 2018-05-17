@@ -1,9 +1,7 @@
-package com.vironit.pharmacy.dao.userDao;
+package com.vironit.pharmacy.dao.orderDao;
 
 import com.vironit.pharmacy.dao.EnumDao;
-import com.vironit.pharmacy.model.user.Role;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import com.vironit.pharmacy.model.order.OrderType;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,15 +10,15 @@ import java.io.IOException;
 import java.util.List;
 
 @Repository
-public class RoleDao implements RoleD {
+public class OrderTypeDao implements EnumDao<OrderType> {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @SuppressWarnings("unchecked")
-    public List<Role> getAll() throws IOException {
-        return sessionFactory.getCurrentSession().createQuery("from Role").list();
+    @Override
+    public List<OrderType> getAll() throws IOException {
+        return sessionFactory.getCurrentSession().createQuery("from OrderType").list();
     }
-
 
 }

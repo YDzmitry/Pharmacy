@@ -3,7 +3,6 @@ package com.vironit.pharmacy.controller;
 import com.vironit.pharmacy.model.user.MainUser;
 import com.vironit.pharmacy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
