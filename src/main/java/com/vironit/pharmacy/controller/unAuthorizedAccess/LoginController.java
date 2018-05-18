@@ -23,12 +23,20 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> enter(@Valid @RequestBody RegistrationAndLoginUser loginUser, HttpSession httpSession) {
-        MainUser user = userService.getByLoginAndPassword(loginUser);
+    @GetMapping("/login")
+    public ResponseEntity<?> enter(/*@Valid @RequestBody RegistrationAndLoginUser loginUser/*, HttpSession httpSession*/) {
+        /*MainUser user = userService.getByLoginAndPassword(loginUser);
         httpSession.setAttribute("idUser", user.getId());
-        httpSession.setAttribute("roleUser", user.getRole());
-        return ResponseEntity.ok().body(user);
+        httpSession.setAttribute("roleUser", user.getRole());*/
+        return ResponseEntity.ok().body("loginPage");
+    }
+
+    @PostMapping("/loginUser")
+    public ResponseEntity<?> enter1(@Valid @RequestBody RegistrationAndLoginUser loginUser, HttpSession httpSession) {
+        //MainUser user = userService.getByLoginAndPassword(loginUser);
+      //httpSession.setAttribute("idUser", user.getId());
+       // httpSession.setAttribute("roleUser", user.getRole());
+        return ResponseEntity.ok().body(12);
     }
 
     @ExceptionHandler(LoginValidatorException.class)

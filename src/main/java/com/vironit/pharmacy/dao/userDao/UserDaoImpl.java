@@ -44,12 +44,11 @@ public class UserDaoImpl implements UserDao {
         sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(MainUser.class, id));
     }
 
-    public MainUser getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
+    public MainUser getByLogin(String loginUser) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "from User Where login = :login and password = :password";
+        String hql = "from User Where login = :login";
         MainUser user = (MainUser) session.createQuery(hql)
-                .setParameter("login", loginUser.getLogin())
-                .setParameter("password", loginUser.getPassword())
+                .setParameter("login", loginUser)
                 .list()
                 .get(0);
         return user;

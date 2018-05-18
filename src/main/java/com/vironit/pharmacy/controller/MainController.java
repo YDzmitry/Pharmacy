@@ -21,7 +21,7 @@ public class MainController {
     }
 
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/admin/{id}")
     public ResponseEntity<?> get(@PathVariable("id") long id) {
         MainUser user = userService.getByPK(id);
         return ResponseEntity.ok().body(user);

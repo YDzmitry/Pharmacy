@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.vironit")
+@ComponentScan("com.vironit.pharmacy.controller")
 public class WebConfig implements WebMvcConfigurer {
+
 }

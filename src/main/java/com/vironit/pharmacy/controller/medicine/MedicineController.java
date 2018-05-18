@@ -24,7 +24,7 @@ public class MedicineController {
     }
 
 
-    @GetMapping("/medicine/get/{id}")
+    @GetMapping("/admin/medicine/get/{id}")
     public ResponseEntity<?> getMedicine(@PathVariable("id") long id) {
         Medicine medicine = medicineService.getByPK(id);
         return ResponseEntity.ok().body(medicine);

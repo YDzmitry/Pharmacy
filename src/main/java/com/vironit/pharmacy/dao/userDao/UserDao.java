@@ -24,5 +24,5 @@ public interface UserDao extends Dao<MainUser> {
     @Override
     void delete(long id);
 
-    MainUser getByLoginAndPassword(RegistrationAndLoginUser loginUser);
+    MainUser getByLogin(String loginUser);
 }

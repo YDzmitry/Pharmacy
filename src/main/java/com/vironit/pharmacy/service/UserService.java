@@ -54,7 +54,7 @@ public class UserService implements MainService<MainUser> {
     }
 
 
-    public MainUser getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
+    /*public MainUser getByLoginAndPassword(RegistrationAndLoginUser loginUser) {
         Map<String, String> errMessageMap = new HashMap<>();
         MainUser user;
         try {
@@ -64,6 +64,6 @@ public class UserService implements MainService<MainUser> {
             throw new LoginValidatorException(errMessageMap);
         }
         return user;
-    }
+    }*/
 
 }
