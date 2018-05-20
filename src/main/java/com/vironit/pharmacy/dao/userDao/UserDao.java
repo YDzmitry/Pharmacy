@@ -4,6 +4,7 @@ import com.vironit.pharmacy.dao.Dao;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.CustomGenericException;
 import com.vironit.pharmacy.model.user.MainUser;
+import com.vironit.pharmacy.model.user.User;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface UserDao extends Dao<MainUser> {
     void delete(long id);
 
     MainUser getByLoginAndPassword(RegistrationAndLoginUser loginUser);
+
+    MainUser getByLogin(String login);
 }

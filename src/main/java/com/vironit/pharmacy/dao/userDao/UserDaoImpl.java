@@ -2,6 +2,7 @@ package com.vironit.pharmacy.dao.userDao;
 
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.model.user.MainUser;
+import com.vironit.pharmacy.model.user.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,4 +56,14 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
+    @Override
+    public User getByLogin(String loginUser) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from User Where login = :login";
+        User user = (User) session.createQuery(hql)
+                .setParameter("login", loginUser)
+                .list()
+                .get(0);
+        return user;
+    }
 }

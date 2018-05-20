@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 @Component
 public class UserRoleValidatorExceptionAspect {
 
-    @Before("@annotation(com.vironit.pharmacy.util.AdminAccessOnly)")
+    /*@Before("@annotation(com.vironit.pharmacy.util.AdminAccessOnly)")
     public void validateBeforeAccessToAdminFunctionality() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attr.getRequest().getSession(false);
@@ -42,5 +42,5 @@ public class UserRoleValidatorExceptionAspect {
         if (!userRole.equals("MANAGER")) {
             throw new CustomGenericException("Restricted for your role");
         }
-    }
+    }*/
 }

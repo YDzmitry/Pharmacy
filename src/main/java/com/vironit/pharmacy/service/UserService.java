@@ -4,6 +4,7 @@ import com.vironit.pharmacy.dao.userDao.UserDaoImpl;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.LoginValidatorException;
 import com.vironit.pharmacy.model.user.MainUser;
+import com.vironit.pharmacy.model.user.User;
 import com.vironit.pharmacy.validator.RegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

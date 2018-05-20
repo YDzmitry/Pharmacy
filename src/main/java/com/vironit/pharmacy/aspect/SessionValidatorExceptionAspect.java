@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 @Component
 public class SessionValidatorExceptionAspect {
 
-    @Before("execution(* com.vironit.pharmacy.controller..*(..))" +
+    /*@Before("execution(* com.vironit.pharmacy.controller..*(..))" +
             "&& !@target(com.vironit.pharmacy.util.NoCheckingActualSession)")
     public void validateBeforeAccessToAuthorizedResources() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
@@ -23,6 +23,6 @@ public class SessionValidatorExceptionAspect {
         } catch (Exception ex) {
             throw new CustomGenericException("no authorized");
         }
-    }
+    }*/
 }
 
