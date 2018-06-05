@@ -18,6 +18,6 @@ public class AdviceSessionControllerException {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity handleAllException(Exception ex) {
-        return ResponseEntity.badRequest().body(HttpStatus.NOT_FOUND);
+        return ResponseEntity.badRequest().body(ex);
     }
 }

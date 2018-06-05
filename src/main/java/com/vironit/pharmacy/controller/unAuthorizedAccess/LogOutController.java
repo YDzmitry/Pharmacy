@@ -1,6 +1,6 @@
 package com.vironit.pharmacy.controller.unAuthorizedAccess;
 
-import com.vironit.pharmacy.util.NoCheckingActualSession;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +9,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpSession;
-@NoCheckingActualSession
+
 @CrossOrigin
 @RestController
 public class LogOutController {

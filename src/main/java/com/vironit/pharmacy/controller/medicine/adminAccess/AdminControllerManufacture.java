@@ -14,20 +14,20 @@ public class AdminControllerManufacture {
     @Autowired
     AdminServiceManufacture adminServiceManufacture;
 
-    @PostMapping("/manufacture/save")
+    @PostMapping("/admin/manufacture/save")
     public ResponseEntity<?> saveManufacture(@RequestBody Manufacture manufacture) {
         long id = adminServiceManufacture.save(manufacture);
         return ResponseEntity.ok().body(id);
     }
 
 
-    @PutMapping("/manufacture/update/{id}")
+    @PutMapping("/admin/manufacture/update/{id}")
     public ResponseEntity<?> updateManufacture(@PathVariable("id") long id, @RequestBody Manufacture manufacture) {
         adminServiceManufacture.update(manufacture);
         return ResponseEntity.ok().body(id);
     }
 
-    @DeleteMapping("/manufacture/delete/{id}")
+    @DeleteMapping("/admin/manufacture/delete/{id}")
     public ResponseEntity<?> deleteManufacture(@PathVariable("id") long id) {
         adminServiceManufacture.delete(id);
         return ResponseEntity.ok().body("Manufacture has been deleted" + id);

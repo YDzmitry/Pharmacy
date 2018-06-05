@@ -15,19 +15,19 @@ public class AdminControllerIndicatorToUseMedicine {
     @Autowired
     AdminServiceIndicatorToUse adminServiceIndicator;
 
-    @PostMapping("/indicatorToUse/save")
+    @PostMapping("/admin/indicatorToUse/save")
     public ResponseEntity<?> saveIndicatorToUse(@RequestBody IndicatorToUse indicatorToUse) {
         long id = adminServiceIndicator.save(indicatorToUse);
         return ResponseEntity.ok().body(id);
     }
 
-    @PutMapping("/indicatorToUse/update/{id}")
+    @PutMapping("/admin/indicatorToUse/update/{id}")
     public ResponseEntity<?> updateManufacture(@PathVariable("id") long id, @RequestBody IndicatorToUse indicatorToUse) {
         adminServiceIndicator.update(indicatorToUse);
         return ResponseEntity.ok().body(id);
     }
 
-    @DeleteMapping("/indicatorToUse/delete/{id}")
+    @DeleteMapping("/admin/indicatorToUse/delete/{id}")
     public ResponseEntity<?> deleteManufacture(@PathVariable("id") long id) {
         adminServiceIndicator.delete(id);
         return ResponseEntity.ok().body("IndicatorToUse has been deleted" + id);

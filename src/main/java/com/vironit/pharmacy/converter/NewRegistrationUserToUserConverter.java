@@ -7,6 +7,7 @@ import com.vironit.pharmacy.model.user.TypeAccount;
 import com.vironit.pharmacy.model.user.MainUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -21,12 +22,15 @@ public class NewRegistrationUserToUserConverter implements Converter<Registratio
     @Autowired
     Map<String, TypeAccount> mapTypeAccount;
 
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
     @Override
     public MainUser convert(RegistrationAndLoginUser newRegistrationUser) {
         MainUser user = new CustomerUser();
         user.setLogin(newRegistrationUser.getLogin());
-        user.setPassword(newRegistrationUser.getPassword());
+        user.setPassword(bCryptPasswordEncoder.encode(newRegistrationUser.getPassword()));
         user.setRole(mapRoles.get("CUSTOMER"));
         user.setTypeAccount(mapTypeAccount.get("VERIFYING"));
         return user;

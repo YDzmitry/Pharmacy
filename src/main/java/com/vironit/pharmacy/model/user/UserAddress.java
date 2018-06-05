@@ -20,16 +20,15 @@ public class UserAddress extends BaseEntity {
     @Column(name = "house")
     private String house;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private CustomerUser customerUser;
 
-    public UserAddress(String country, String city, String street, String house, CustomerUser customerUser) {
+    public UserAddress(String country, String city, String street, String house) {
         this.country = country;
         this.city = city;
         this.street = street;
         this.house = house;
-        this.customerUser = customerUser;
     }
 
     public UserAddress() {
@@ -51,8 +50,12 @@ public class UserAddress extends BaseEntity {
         return house;
     }
 
+
     public CustomerUser getCustomerUser() {
         return customerUser;
     }
-    
+
+    public void setCustomerUser(CustomerUser customerUser) {
+        this.customerUser = customerUser;
+    }
 }

@@ -19,7 +19,7 @@ public class CustomerUser extends MainUser {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "customerUser",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customerUser",fetch = FetchType.LAZY)
     @Column
     private Set<UserAddress> addressDeliveryList;
 
@@ -51,7 +51,4 @@ public class CustomerUser extends MainUser {
         return phone;
     }
 
-    public Set<UserAddress> getAddressDeliveryList() {
-        return addressDeliveryList;
-    }
 }

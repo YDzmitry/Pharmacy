@@ -5,12 +5,9 @@ import com.vironit.pharmacy.converter.NewRegistrationUserToUserConverter;
 import com.vironit.pharmacy.dto.RegistrationAndLoginUser;
 import com.vironit.pharmacy.exception.RegistrationValidatorException;
 import com.vironit.pharmacy.model.user.MainUser;
-import com.vironit.pharmacy.model.user.User;
 import com.vironit.pharmacy.service.UserService;
-import com.vironit.pharmacy.util.NoCheckingActualSession;
 import com.vironit.pharmacy.validator.CreatingNewUserErrorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@NoCheckingActualSession
+
 @CrossOrigin
 @RestController
 public class RegistrationController {
