@@ -20,7 +20,14 @@ public class LoginController {
 
 
     @GetMapping("/success")
-    public ResponseEntity<?> enter(@RequestParam ("secure") String destination) {
+    public ResponseEntity<?> successEnter(@RequestParam ("secure") String destination) {
+        Map<String,String> map = new HashMap<>();
+        map.put("page",destination);
+        return ResponseEntity.ok().body(map);
+    }
+
+    @GetMapping("/err")
+    public ResponseEntity<?> failureEnter(@RequestParam ("secure") String destination) {
         Map<String,String> map = new HashMap<>();
         map.put("page",destination);
         return ResponseEntity.ok().body(map);

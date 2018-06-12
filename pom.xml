@@ -6,7 +6,7 @@
     <groupId>com.vironit</groupId>
     <artifactId>pharmacy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>pharmacy</name>
     <description>Demo project for Pharmacy</description>
@@ -125,6 +125,11 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20170516</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

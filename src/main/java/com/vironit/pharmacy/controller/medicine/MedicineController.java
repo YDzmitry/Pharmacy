@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
+
 @RestController
 public class MedicineController {
 
@@ -15,13 +15,14 @@ public class MedicineController {
     MedicineService medicineService;
 
 
+    @CrossOrigin
     @PostMapping("/admin/medicine/save")
     public ResponseEntity<?> saveMedicine(@RequestBody Medicine medicine) {
         long id = medicineService.save(medicine);
         return ResponseEntity.ok().body("New Medicine has been saved with ID:" + id);
     }
 
-
+    @CrossOrigin
     @GetMapping("/admin/medicine/get/{id}")
     public ResponseEntity<?> getMedicine(@PathVariable("id") long id) {
         Medicine medicine = medicineService.getByPK(id);

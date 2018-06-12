@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 
-@CrossOrigin(origins = "http://localhost:8080")
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -35,34 +36,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     RoleBasedAuthenticationSuccessHandler roleBasedAuthenticationSuccessHandler;
 
     @Autowired
+    FailureHandler failureHandler;
+
+    @Autowired
     public void registerGlobalAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth
+         auth
                 .userDetailsService(loginService)
                 .passwordEncoder(passwordEncoder());
-
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
         http.csrf().disable();
-        http.authorizeRequests()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/customer/**").hasAuthority("CUSTOMER")
-                .antMatchers("/manager/**").hasAuthority("MANAGER")
-                .antMatchers(HttpMethod.GET,"/order/get/**").hasAnyAuthority("ADMIN","CUSTOMER")
-                .antMatchers(HttpMethod.DELETE,"/order/delete/**").hasAuthority("ADMIN");
-        http.formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/loginUser")
-                .usernameParameter("login")
-                .passwordParameter("password")
-                .successHandler(roleBasedAuthenticationSuccessHandler)
-                .failureForwardUrl("/err");
-        http.logout().logoutUrl("/logout")
-                .logoutSuccessUrl("/index")
-                .invalidateHttpSession(true);
+        http.cors().
+                and().
+                    authorizeRequests()
+                    .antMatchers("/admin/**").hasAuthority("ADMIN")
+                    .antMatchers("/customer/**").hasAuthority("CUSTOMER")
+                    .antMatchers("/manager/**").hasAuthority("MANAGER")
+                    .antMatchers(HttpMethod.GET,"/order/get/**").hasAnyAuthority("ADMIN","CUSTOMER")
+                    .antMatchers(HttpMethod.DELETE,"/order/delete/**").hasAuthority("ADMIN").
+                and().
+                    formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/loginUser")
+                    .usernameParameter("login")
+                    .passwordParameter("password")
+                    .successHandler(roleBasedAuthenticationSuccessHandler)
+                    .failureHandler(failureHandler).
+                    /*.failureForwardUrl("/err").*/
+                and().
+                    logout().logoutUrl("/logout")
+                    .logoutSuccessUrl("/index")
+                    .invalidateHttpSession(true);
     }
 
 
@@ -80,8 +87,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedMethods(Arrays.asList("HEAD",
+                "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+        // setAllowCredentials(true) is important, otherwise:
+        // The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.
+        configuration.setAllowCredentials(true);
+        // setAllowedHeaders is important! Without it, OPTIONS preflight request
+        // will fail with 403 Invalid CORS request
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type" ,"Origin", "Accept","X-Requested-With"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
